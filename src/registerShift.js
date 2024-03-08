@@ -1,6 +1,8 @@
 import sheets from './sheets.js';
 import spreadsheetId from '../private/spreadsheetId.js';
 
+const sheet = 'Sheet1';
+
 const lastRow = async range => {
 	console.debug('buscando última linha na range: ', range);
 	const { data } = await sheets.spreadsheets.values.get({
@@ -13,29 +15,29 @@ const lastRow = async range => {
 
 const registerShift = async (action, range) => {
 	console.debug('registrando', action, 'na célula', range);
+
+	const date = new Date();
+	const dateString = date.toLocaleDateString('pt-BR');
+	const timeString = date.toLocaleTimeString('pt-BR');
+
 	const { data } = await sheets.spreadsheets.values.append({
 		spreadsheetId: '1r_2TcewePjJsl1J_r6yJRMgbPk8ivgxcaxyaA3PsbVc',
 		range,
 		valueInputOption: 'USER_ENTERED',
 		resource: {
-			values: [[action, new Date().toLocaleString('pt-BR')]]
+			values: [[dateString, timeString, date]]
 		}
 	});
 
 	return data;
 };
 
-const startShift = async () => {
-	const range = await lastRow('A:A');
-	return registerShift('Entrada', `A${range + 1}`);
+export const startShift = async () => {
+	const range = await lastRow(`${sheet}!A:A`);
+	return registerShift('Entrada', `${sheet}!A${range + 1}`);
 };
 
-const endShift = async () => {
-	const range = await lastRow('C:C');
-	return registerShift('Saída', `C${range + 1}`);
+export const endShift = async () => {
+	const range = await lastRow(`${sheet}!D:D`);
+	return registerShift('Saída', `${sheet}!D${range + 1}`);
 };
-
-(async () => {
-	console.debug(await startShift());
-	console.debug(await endShift());
-})();

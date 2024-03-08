@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"register": "node index.js register",
+		"start": "node index.js start",
+		"end": "node index.js end"
 	},
 	"author": "",
 	"license": "ISC",
