@@ -1,0 +1,16 @@
+build
+node_modules
+dist
+docs/.next
+docs/components
+docs/layouts
+docs/out
+docs/pages
+docs/queries
+docs/scripts
+docs/static
+docs/temp
+docs/utils
+src/middlewares/graphql/resolvers/mutations.js
+src/middlewares/nodered/flows-licenciamento.json
+src/middlewares/nodered/flows.json

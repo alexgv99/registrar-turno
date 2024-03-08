@@ -1,0 +1,28 @@
+# Don't check auto-generated stuff into git
+coverage
+build
+dist
+node_modules*
+stats.json
+*.log
+digitalizacao/**/*
+uploads
+minio
+logs/**/*
+.vscode/settings.json
+*.backup
+*.pdf
+
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
+yarn-error.log
+.audit.json
+.*-audit.json
+src/middlewares/nodered/.config.json
+src/middlewares/nodered/.sessions.json
+src/middlewares/nodered/.config.users.json
+src/middlewares/nodered/.config.nodes.json
+private/google-auth.json
+private/spreadsheetId.js
