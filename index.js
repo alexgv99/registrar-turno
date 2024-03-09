@@ -15,7 +15,7 @@ if (end) {
 	endShift();
 }
 if (registerTime) {
-	register();
+	await register();
 }
 
 if (!(start || end || registerTime)) {
